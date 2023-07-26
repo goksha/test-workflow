@@ -1,17 +1,3 @@
-terraform {
-  required_version = ">= 0.13"
-  required_providers {
-    kubectl = {
-      source  = "gavinbunney/kubectl"
-      version = ">= 1.7.0"
-    }
-  }
-  backend "gcs" {
-    bucket = "terraform-backend-<project-id>"
-    prefix = "argocd-terraform"
-  }
-}
-
 provider "google" {
   project = var.project_id
   region  = var.region
@@ -19,7 +5,7 @@ provider "google" {
 }
 
 resource "google_service_account" "main" {
-  account_id   = "${var.cluster_name}-sa"
+  account_id   = "${var.cluster_name}-shagok"
   display_name = "GKE Cluster ${var.cluster_name} Service Account"
 }
 
