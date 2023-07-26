@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/goksha/pilot-gcp.git
+    repoURL: https://github.com/goksha/test-workflow.git
     targetRevision: HEAD
     path: manifests/nginx
   destination:
