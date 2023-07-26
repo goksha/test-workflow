@@ -81,3 +81,8 @@ resource "kubectl_manifest" "my-nginx-app" {
     yaml_body = element(data.kubectl_file_documents.my-nginx-app.documents, count.index)
     override_namespace = "argocd"
 }
+
+resource "google_storage_bucket" "bucket" {
+  name     = "cluster-backup-velero-shagok"
+  location = "us-east1"
+}
