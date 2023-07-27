@@ -83,6 +83,6 @@ resource "kubectl_manifest" "my-nginx-app" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name     = "cluster-backup-velero-shagok"
+  name     = "shagok-velero-bucket"
   location = "us-east1"
 }
