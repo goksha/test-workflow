@@ -14,6 +14,15 @@ resource "google_container_cluster" "main" {
   name               = "${var.cluster_name}"
   location           = var.location
   initial_node_count = 3
+    node_pool {
+    name            = "default-pool"
+    machine_type    = "n1-highcpu-4"  # Specify the desired machine type (CPU and memory).
+    disk_size_gb    = 100              # Specify the desired disk size in GB.
+    preemptible     = false            # Set to true for preemptible VMs, if desired.
+    autoscaling {
+      min_node_count = 1
+      max_node_count = 5
+    }
   node_config {
     service_account = google_service_account.main.email
     oauth_scopes = [
