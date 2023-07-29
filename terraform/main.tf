@@ -46,7 +46,7 @@ provider "kubectl" {
   token                  = module.gke_auth.token
   load_config_file       = false
 }
-
+/*
 data "kubectl_file_documents" "namespace" {
     content = file("../manifests/argocd/namespace.yaml")
 } 
@@ -81,7 +81,7 @@ resource "kubectl_manifest" "my-nginx-app" {
     count     = length(data.kubectl_file_documents.my-nginx-app.documents)
     yaml_body = element(data.kubectl_file_documents.my-nginx-app.documents, count.index)
     override_namespace = "argocd"
-}
+} */
 
 resource "google_storage_bucket" "bucket" {
   name     = "shagok-velero-backup"
