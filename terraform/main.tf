@@ -4,20 +4,15 @@ provider "google" {
   zone    = var.location
 }
 
-
-resource "google_service_account" "main" {
-  account_id   = "${var.cluster_name}-shagok"
-  display_name = "GKE Cluster ${var.cluster_name} Service Account"
-}
-
 resource "google_container_cluster" "main" {
   name               = "${var.cluster_name}"
   location           = var.location
   initial_node_count = 3
 
   node_config {
+    machine_type    = "e2-standard-4"  # Set the desired machine type here
     service_account = google_service_account.main.email
-    oauth_scopes = [
+    oauth_scopes    = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
   }
@@ -28,7 +23,7 @@ resource "google_container_cluster" "main" {
 }
 
 resource "time_sleep" "wait_30_seconds" {
-  depends_on = [google_container_cluster.main]
+  depends_on      = [google_container_cluster.main]
   create_duration = "30s"
 }
 
