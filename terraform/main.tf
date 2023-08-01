@@ -10,11 +10,11 @@ resource "google_container_cluster" "main" {
   initial_node_count = 3
 
   node_config {
-    machine_type    = "e2-standard-4"  # Set the desired machine type here
     service_account = google_service_account.main.email
     oauth_scopes    = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
+    machine_type    = "e2-standard-4"
   }
   timeouts {
     create = "30m"
