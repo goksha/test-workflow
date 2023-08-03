@@ -4,7 +4,6 @@ provider "google" {
   zone    = var.location
 }
 
-
 resource "google_service_account" "main" {
   account_id   = "${var.cluster_name}-shagok"
   display_name = "GKE Cluster ${var.cluster_name} Service Account"
